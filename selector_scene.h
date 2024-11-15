@@ -4,7 +4,7 @@
 #include "scene.h"
 #include "scene_manager.h"
 
-class SelectorScene : public Sceen;
+class SelectorScene : public Scene
 {
 public:
 	SelectorScene() = default;
