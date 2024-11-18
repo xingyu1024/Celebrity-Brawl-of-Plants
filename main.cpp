@@ -1,6 +1,8 @@
 #include "util.h"
 #include "atlas.h"
 #include "scene.h"
+#include "player.h"
+#include "platform.h"
 #include "menu_scene.h"
 #include "game_scene.h"
 #include "selector_scene.h"
@@ -9,6 +11,8 @@
 #include <graphics.h>
 
 #pragma comment(lib, "Winmm.lib")
+
+bool is_debug = false;                          // 是否开启调试模式
 
 IMAGE img_menu_background;                      // 主菜单背景图片
 
@@ -83,7 +87,13 @@ Scene* menu_scene = nullptr;
 Scene* game_scene = nullptr;
 Scene* selector_scene = nullptr;
 
+Camera main_camera;
 SceneManager scene_manager;
+
+std::vector<Platform> platform_list;
+
+Player* player_1 = nullptr;
+Player* player_2 = nullptr;
 
 void flip_atlas(Atlas& src, Atlas& dst)
 {
@@ -194,6 +204,9 @@ int main()
 
 	initgraph(1280, 720, EW_SHOWCONSOLE);
 
+	settextstyle(28, 0, _T("IPix"));
+	setbkmode(TRANSPARENT);
+
 	BeginBatchDraw();
 
 	menu_scene = new MenuScene();
@@ -218,7 +231,7 @@ int main()
 		last_tick_time = current_tick_time;
 
 		cleardevice();
-		scene_manager.on_draw();
+		scene_manager.on_draw(main_camera);
 		FlushBatchDraw();
 
 		DWORD frame_end_time = GetTickCount();

@@ -3,6 +3,7 @@
 
 #include "util.h"
 #include "atlas.h"
+#include "camera.h"
 
 #include <functional>
 #include <graphics.h>
@@ -70,9 +71,9 @@ public:
 		}
 	}
 
-	void on_draw(int x, int y) const
+	void on_draw(const Camera& camera, int x, int y) const
 	{
-		putimage_alpha(x, y, atlas->get_image(idx_frame));
+		putimage_alpha(camera, x, y, atlas->get_image(idx_frame));
 	}
 
 	void set_callback(std::function<void()> callback)
