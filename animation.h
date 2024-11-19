@@ -53,6 +53,11 @@ public:
 		return (idx_frame == atlas->get_size() - 1);
 	}
 
+	void set_callback(std::function<void()> callback)
+	{
+		this->callback = callback;
+	}
+
 	void on_update(int delta)
 	{
 		timer += delta;
@@ -76,10 +81,6 @@ public:
 		putimage_alpha(camera, x, y, atlas->get_image(idx_frame));
 	}
 
-	void set_callback(std::function<void()> callback)
-	{
-		this->callback = callback;
-	}
 private:
 	int timer = 0;          // ¼ÆÊ±Æ÷
 	int interval = 0;       // Ö¡¼ä¸ô
