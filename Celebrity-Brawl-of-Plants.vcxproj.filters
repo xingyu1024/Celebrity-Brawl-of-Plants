@@ -89,5 +89,11 @@
     <ClInclude Include="sun_bullet_ex.h">
       <Filter>头文件\bullet</Filter>
     </ClInclude>
+    <ClInclude Include="status_bar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="particle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
