@@ -207,7 +207,7 @@ int main()
 
 	load_game_resources();
 
-	initgraph(1280, 720, EW_SHOWCONSOLE);
+	initgraph(1280, 720);
 
 	settextstyle(28, 0, _T("IPix"));
 	setbkmode(TRANSPARENT);
